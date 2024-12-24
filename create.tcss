@@ -1,0 +1,20 @@
+#container {
+    padding: 1;
+    background: #FDFBD4;
+}
+
+Input {
+    border: tall #545333;
+    background:rgb(200, 197, 156);
+}
+
+Label.item-labels {
+    padding: 0 3;
+    border: tall #545333;
+    background: blanchedalmond;
+}
+
+Horizontal {
+    margin: 1;
+    height: 3;
+}

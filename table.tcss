@@ -1,0 +1,44 @@
+#container {
+    padding: 1;
+    background: #FDFBD4;
+}
+
+#buttons {
+    width: auto;
+}
+
+#title {
+    margin: 1;
+    padding: 0 9;
+    border: tall #545333;
+    background: blanchedalmond;
+}
+
+#table {
+    background: wheat;
+    color: white;
+    margin: 0 1;
+}
+
+Button {
+    background: wheat;
+    border: tall darkolivegreen;
+    margin: 0 1;
+}
+
+Input {
+    border: tall #545333;
+    background:rgb(200, 197, 156);
+}
+
+.datatable--header {
+    background: wheat;
+}
+
+#error {
+    color: red;
+}
+
+#manual {
+    margin: 0 1
+}
