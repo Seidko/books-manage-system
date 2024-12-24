@@ -105,16 +105,16 @@ class CreateScreen(Screen):
         status: Optional[str] = self.query_one("#status").value
         location: Optional[str] = self.query_one("#location").value
 
-        self.db.execute(f"""
+        cur = self.db.execute(f"""
 INSERT INTO books (name, author, publish, isbn, status, location) VALUES
-(?,?,?,?,?,?);""", (name, author, publish, isbn, status, location))
+(?,?,?,?,?,?) RETURNING *;""", (name, author, publish, isbn, status, location))
+        row = cur.fetchone()
         self.db.commit()
         
-        self.dismiss()
+        self.dismiss(row)
 
 class BookApp(App):
     CSS_PATH = "table.tcss"
-    BINDINGS = [("c", "push_screen('create')", "Create Screen")]
 
     db: Connection
     query: Optional[str]
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS books (
         with Container(id="container"):
             with Center():
                 yield Label("图书管理", id="title")
-            yield Label("使用说明：点击+号创建新书数据，点击X删除数据，点击单元格修改数据，在下面的输入框输入SQL语句查询数据。", id="manual")
+            yield Label("使用说明：点击+号创建新书数据，点击X删除数据，点击单元格修改数据，在下面的输入框输入SQL语句查询数据。按Ctrl+Q退出程序。", id="manual")
             yield Input("", placeholder="输入SQL查询语句：（WHERE 后面的部分）", id="query")
 
             error = Label("查询语法错误！", id="error")
@@ -149,16 +149,16 @@ CREATE TABLE IF NOT EXISTS books (
             with Center():
                 yield BookTable(self.db, id="table")
 
-    def on_mount(self):
-        self.install_screen(CreateScreen(self.db), name="create")
-
     @work
     @on(DataTable.CellSelected)
     async def cell_selected(self, event: DataTable.CellSelected):
         if event.coordinate.column == 0 and event.coordinate.row == event.data_table.row_count - 1:
-            await self.push_screen_wait("create")
-            table: BookTable = self.query_one("#table")
-            table.display(self.query)
+            row = await self.push_screen_wait(CreateScreen(self.db))
+            if row is not None:
+                table: BookTable = self.query_one("#table")
+                table.remove_row(table.coordinate_to_cell_key(Coordinate(event.data_table.row_count - 1, 0)).row_key)
+                table.add_row(*list(row) + ["X"])
+                table.add_row("+")
         if event.coordinate.column == 7 and event.coordinate.row < event.data_table.row_count - 1:
             table: BookTable = self.query_one("#table")
             id = table.get_cell_at(Coordinate(event.coordinate.row, 0))
@@ -188,8 +188,6 @@ CREATE TABLE IF NOT EXISTS books (
             error_label.visible = True
         else:
             error_label.visible = False
-
-
 
 if __name__ == "__main__":
     app = BookApp(connect("books.db"))
