@@ -14,10 +14,22 @@
     background: blanchedalmond;
 }
 
+#table-scroller {
+    width: 100%;
+}
+
 #table {
     background: wheat;
     color: white;
     margin: 0 1;
+    
+    scrollbar-background: rgb(200, 197, 156);
+    scrollbar-background-active: rgb(200, 197, 156);
+    scrollbar-background-hover: rgb(200, 197, 156);
+    scrollbar-color: #545333;
+    scrollbar-color-active:rgb(111, 110, 67);
+    scrollbar-color-hover: rgb(111, 110, 67);
+    scrollbar-corner-color: #545333;
 }
 
 Button {

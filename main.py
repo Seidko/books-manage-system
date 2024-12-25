@@ -1,7 +1,7 @@
 from textual import on, work
 from textual.app import App
 from textual.screen import Screen
-from textual.containers import Container, Center, Horizontal
+from textual.containers import Container, Center, Horizontal, Vertical
 from textual.widgets import Label, DataTable, Input, Button
 from textual.coordinate import Coordinate
 from sqlite3 import connect, Connection, OperationalError
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS books (
             error.visible = False
             yield error
 
-            with Center():
+            with Vertical(id="table-scroller"):
                 yield BookTable(self.db, id="table")
 
     @work
