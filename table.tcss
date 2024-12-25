@@ -1,6 +1,7 @@
 #container {
     padding: 1;
     background: #FDFBD4;
+    color: black;
 }
 
 #buttons {
@@ -20,7 +21,7 @@
 
 #table {
     background: wheat;
-    color: white;
+    color: black;
     margin: 0 1;
     
     scrollbar-background: rgb(200, 197, 156);
@@ -34,6 +35,7 @@
 
 Button {
     background: wheat;
+    color: black;
     border: tall darkolivegreen;
     margin: 0 1;
 }
@@ -41,10 +43,12 @@ Button {
 Input {
     border: tall #545333;
     background:rgb(200, 197, 156);
+    color: black;
 }
 
 .datatable--header {
     background: wheat;
+    color: black;
 }
 
 #error {

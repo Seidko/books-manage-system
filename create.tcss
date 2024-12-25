@@ -6,12 +6,14 @@
 Input {
     border: tall #545333;
     background:rgb(200, 197, 156);
+    color: black;
 }
 
 Label.item-labels {
     padding: 0 3;
     border: tall #545333;
     background: blanchedalmond;
+    color: black;
 }
 
 Horizontal {
