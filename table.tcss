@@ -1,5 +1,5 @@
 #container {
-    padding: 1;
+    padding: 2;
     background: #FDFBD4;
     color: black;
 }
@@ -40,19 +40,16 @@ Button {
     margin: 0 1;
 }
 
-Input {
+#query {
     border: tall #545333;
     background:rgb(200, 197, 156);
     color: black;
+    margin: 1 0;
 }
 
 .datatable--header {
     background: wheat;
     color: black;
-}
-
-#error {
-    color: red;
 }
 
 #manual {

@@ -1,14 +1,14 @@
 #container {
-    padding: 1;
+    padding: 2;
     background: #FDFBD4;
 }
 
-Input {
+#input {
     border: tall #545333;
     background:rgb(200, 197, 156);
 }
 
-Label.item-labels {
+Label.input-labels {
     padding: 0 3;
     border: tall #545333;
     background: blanchedalmond;

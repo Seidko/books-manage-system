@@ -1,5 +1,5 @@
 #container {
-    padding: 1;
+    padding: 2;
     background: #FDFBD4;
 }
 
@@ -9,7 +9,7 @@ Input {
     color: black;
 }
 
-Label.item-labels {
+Label.input-labels {
     padding: 0 3;
     border: tall #545333;
     background: blanchedalmond;
