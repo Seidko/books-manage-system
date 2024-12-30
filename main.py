@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS books (
         with Container(id="container"):
             with Center():
                 yield Label("图书管理", id="title")
-            yield Label("使用说明：点击+号创建新书数据，点击X删除数据，点击单元格修改数据，在下面的输入框输入SQL语句查询数据。按Ctrl+Q退出程序。", id="manual")
+            yield Label('使用说明：点击+号创建新书数据，点击X删除数据，点击单元格修改数据\n点击"操作"列的单元格以进行借阅归还操作，在下面的输入框即可搜索。按Ctrl+Q退出程序。', id="manual")
             yield Input("", placeholder="搜索", id="query")
 
             with Vertical(id="table-scroller"):
